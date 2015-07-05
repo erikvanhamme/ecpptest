@@ -1,0 +1,6 @@
+[submodule "ecpp"]
+	path = ecpp
+	url = https://github.com/erikvanhamme/ecpp
+[submodule "buildscripts"]
+	path = buildscripts
+	url = https://github.com/erikvanhamme/buildscripts
