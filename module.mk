@@ -16,6 +16,7 @@ sources += \
 	src/allocatortest.cpp \
 	src/byteutilstest.cpp \
 	src/factorytest.cpp \
+	src/piddemo.cpp \
 	src/registry.cpp \
 	src/testrunner.cpp \
 

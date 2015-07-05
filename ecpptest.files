@@ -37,3 +37,4 @@ src/byteutilstest.cpp
 src/factorytest.cpp
 src/registry.cpp
 src/testrunner.cpp
+src/piddemo.cpp
