@@ -27,10 +27,12 @@ ecpp/inc/linkedlist.h
 ecpp/inc/endianness.h
 ecpp/inc/fraction.h
 ecpp/inc/range.h
+ecpp/inc/poolallocator.h
 ecpp/src/allocator.cpp
 ecpp/src/assertsafe.cpp
 ecpp/src/throwsafe.cpp
 ecpp/src/byteutils.cpp
+ecpp/src/poolallocator.cpp
 ecpp/module.mk
 inc/base.h
 inc/composite.h

@@ -19,6 +19,7 @@
 #include "allocator.h"
 #include "countingallocator.h"
 #include "linkedlist.h"
+#include "poolallocator.h"
 
 TEST(LinkedListTest, testConstructor) {
     CountingAllocator allocator;
@@ -407,6 +408,15 @@ TEST(LinkedListTest, testRemove) {
 
     ASSERT_EQ(2, list.at(0));
     ASSERT_EQ(4, list.at(1));
+
+    // Test remove past end.
+
+    auto it4 = list.end();
+    ++it4;
+
+    ASSERT_FALSE(it4.remove());
+
+    ASSERT_EQ(2, list.size());
 }
 
 TEST(LinkedListTest, testClear) {
@@ -428,4 +438,40 @@ TEST(LinkedListTest, testClear) {
     ASSERT_EQ(0, list.size());
     ASSERT_EQ(5, allocator.getAllocations());
     ASSERT_EQ(5, allocator.getDeallocations());
+}
+
+TEST(LinkedListTest, testNoMem) {
+
+    std::size_t size = (ecpp::LinkedListEntry<int>::LINKED_LIST_ENTRY_SIZE + 1) * 4;
+    void *mem = ::operator new(size);
+
+    ASSERT_FALSE(mem == nullptr);
+
+    ecpp::PoolAllocator allocator(size, ecpp::LinkedListEntry<int>::LINKED_LIST_ENTRY_SIZE, mem);
+
+    ecpp::LinkedList<int> list(allocator);
+
+    auto it1 = list.begin();
+
+    ASSERT_TRUE(it1.insertAfter(1));
+    ASSERT_TRUE(it1.insertAfter(2));
+    ASSERT_TRUE(it1.insertAfter(3));
+    ASSERT_TRUE(it1.insertAfter(4));
+    ASSERT_FALSE(it1.insertAfter(5));
+
+    ASSERT_EQ(4, list.size());
+
+    list.clear();
+
+    ASSERT_EQ(0, list.size());
+
+    auto it2 = list.begin();
+
+    ASSERT_TRUE(it2.insertBefore(1));
+    ASSERT_TRUE(it2.insertBefore(2));
+    ASSERT_TRUE(it2.insertBefore(3));
+    ASSERT_TRUE(it2.insertBefore(4));
+    ASSERT_FALSE(it2.insertBefore(5));
+
+    ASSERT_EQ(4, list.size());
 }
