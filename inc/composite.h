@@ -26,7 +26,7 @@
 
 class Composite {
 public:
-    Composite(ecpp::mem::Factory &factory) {
+    Composite(ecpp::Factory &factory) {
         pBase = factory.create<Base>(7u);
         Registry::getInstance().hit("Composite::Composite(Factory &)");
     }

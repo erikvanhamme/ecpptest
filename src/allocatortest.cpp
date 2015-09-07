@@ -21,14 +21,14 @@
 #include <cstddef>
 
 TEST(AllocatorTest, testCtorDtor) {
-    ecpp::mem::Allocator *allocator = new ecpp::mem::Allocator();
+    ecpp::Allocator *allocator = new ecpp::Allocator();
     ASSERT_NE(nullptr, allocator);
 
     delete(allocator);
 }
 
 TEST(AllocatorTest, testAllocateDeallocate) {
-    ecpp::mem::Allocator allocator;
+    ecpp::Allocator allocator;
 
     allocator.deallocate(nullptr);
 

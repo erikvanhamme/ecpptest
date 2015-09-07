@@ -27,8 +27,8 @@
 #include <memory>
 
 TEST(FactoryTest, testMockups) {
-    ecpp::mem::Allocator allocator;
-    ecpp::mem::Factory factory(allocator);
+    ecpp::Allocator allocator;
+    ecpp::Factory factory(allocator);
 
     Registry &reg = Registry::getInstance();
     reg.reset();
@@ -80,8 +80,8 @@ TEST(FactoryTest, testMockups) {
 }
 
 TEST(FactoryTest, testCreate) {
-    ecpp::mem::Allocator allocator;
-    ecpp::mem::Factory factory(allocator);
+    ecpp::Allocator allocator;
+    ecpp::Factory factory(allocator);
 
     Registry &reg = Registry::getInstance();
     reg.reset();
@@ -135,7 +135,7 @@ TEST(FactoryTest, testCreate) {
     reg.reset();
 
     {
-        auto ptr = factory.create<Composite, ecpp::mem::Factory &>(factory);
+        auto ptr = factory.create<Composite, ecpp::Factory &>(factory);
 
         ASSERT_NE(nullptr, ptr.get());
 
@@ -173,7 +173,7 @@ TEST(FactoryTest, testCreate) {
 
 TEST(FactoryTest, testCreateArray) {
     CountingAllocator allocator;
-    ecpp::mem::Factory factory(allocator);
+    ecpp::Factory factory(allocator);
 
     Registry &reg = Registry::getInstance();
     reg.reset();

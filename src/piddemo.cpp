@@ -21,9 +21,9 @@
 
 #include <iostream>
 
-typedef ecpp::control::Pid<int, int, float> float_pid_t;
+typedef ecpp::Pid<int, int, float> float_pid_t;
 
-typedef ecpp::control::Pid<int, int, ecpp::util::Fraction<int, int>> fraction_pid_t;
+typedef ecpp::Pid<int, int, ecpp::Fraction<int, int>> fraction_pid_t;
 
 TEST(PidDemo, runDemo) {
 

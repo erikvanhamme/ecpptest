@@ -1,6 +1,5 @@
 build/gtest-1.7.0/include
-ecpp/inc/control
+ecpp/inc
 ecpp/inc/mem
-ecpp/inc/util
 inc
 src

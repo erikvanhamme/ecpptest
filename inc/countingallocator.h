@@ -21,7 +21,7 @@
 
 #include <cstddef>
 
-class CountingAllocator : public ecpp::mem::Allocator {
+class CountingAllocator : public ecpp::Allocator {
 public:
     CountingAllocator() : Allocator() {
         reset();
