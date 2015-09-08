@@ -48,3 +48,4 @@ Makefile
 module.mk
 src/linkedlisttest.cpp
 ecpp/inc/comparator.h
+src/comparatortest.cpp

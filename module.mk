@@ -14,8 +14,9 @@
 
 sources += \
 	src/allocatortest.cpp \
+	src/comparatortest.cpp \
 	src/factorytest.cpp \
-        src/linkedlisttest.cpp \
+	src/linkedlisttest.cpp \
 	src/piddemo.cpp \
 	src/registry.cpp \
 	src/testrunner.cpp \
