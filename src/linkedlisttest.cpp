@@ -475,3 +475,49 @@ TEST(LinkedListTest, testNoMem) {
 
     ASSERT_EQ(4, list.size());
 }
+
+TEST(LinkedListTest, testSwap) {
+    CountingAllocator allocator;
+    ecpp::LinkedList<int> list(allocator);
+
+    ASSERT_TRUE(list.append(1));
+    ASSERT_TRUE(list.append(2));
+    ASSERT_TRUE(list.append(3));
+    ASSERT_TRUE(list.append(4));
+    ASSERT_TRUE(list.append(5));
+
+    ASSERT_EQ(5, list.size());
+    ASSERT_EQ(5, allocator.getAllocations());
+
+    // Test swap in the middle somewhere, (no head, or tail).
+
+    list.swap(1, 3);
+
+    ASSERT_EQ(4, list.at(1));
+    ASSERT_EQ(2, list.at(3));
+
+    // Test swap head to middle.
+
+    list.swap(0, 2);
+
+    ASSERT_EQ(3, list.at(0));
+    ASSERT_EQ(1, list.at(2));
+
+    // Test swap middle to tail.
+
+    list.swap(4, 2);
+
+    ASSERT_EQ(1, list.at(4));
+    ASSERT_EQ(5, list.at(2));
+
+    // Test swap head with tail.
+
+    list.swap(0, 4);
+
+    ASSERT_EQ(1, list.at(0));
+    ASSERT_EQ(3, list.at(4));
+}
+
+TEST(LinkedListTest, testSort) {
+
+}
